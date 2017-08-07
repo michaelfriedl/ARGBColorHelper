@@ -5,8 +5,47 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ARGBColorHelper"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
-    </Grid>
+        Title="MainWindow" Height="150" Width="350"
+        Loaded="Window_Loaded">
+    <Window.Resources>
+        <local:CustomColorView x:Key="TestFillColor" A="125" R="33" G="55" B="77"/>
+        <local:ConvertDoubleToByte x:Key="ByteConverter"/>
+    </Window.Resources>
+    <DockPanel>
+        <StackPanel>
+            <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" >
+                <Label Width="20" Content="A"/>
+                <Slider x:Name="ASlider"  Value="{Binding A, Source={StaticResource TestFillColor}, Mode=TwoWay}"
+                        Width ="100" HorizontalAlignment="Left" VerticalAlignment="Top"  Minimum ="0" Maximum="255"/>
+                <TextBox x:Name="ATextBox" Width="30"
+                         Text="{Binding ElementName=ASlider, Path=Value, StringFormat={}{0:##}}"/>
+            </StackPanel>
+            <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" >
+                <Label Width="20" Content="R"/>
+                <Slider x:Name="RSlider" Value="{Binding R, Source={StaticResource TestFillColor}, Mode=TwoWay}"
+                        Width ="100" HorizontalAlignment="Left" VerticalAlignment="Top"  Minimum ="0" Maximum="255"/>
+                <TextBox x:Name="RTextBox"  Width="30"
+                         Text="{Binding ElementName=RSlider, Path=Value, StringFormat={}{0:##}}"/>
+            </StackPanel>
+            <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" >
+                <Label Width="20" Content="G"/>
+                <Slider x:Name="GSlider" Value="{Binding G, Source={StaticResource TestFillColor}, Mode=TwoWay}"
+                        Width ="100" HorizontalAlignment="Left" VerticalAlignment="Top"  Minimum ="0" Maximum="255"/>
+                <TextBox x:Name="GTextBox"  Width="30"
+                         Text="{Binding ElementName=GSlider, Path=Value, StringFormat={}{0:##}}"/>
+            </StackPanel>
+            <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" >
+                <Label Width="20" Content="B"/>
+                <Slider x:Name="BSlider" Value="{Binding B, Source={StaticResource TestFillColor}, Mode=TwoWay}"
+                        Width ="100" HorizontalAlignment="Left" VerticalAlignment="Top"  Minimum ="0" Maximum="255"/>
+                <TextBox x:Name="BTextBox" Width="30"
+                         Text="{Binding ElementName=BSlider, Path=Value, StringFormat={}{0:##}}"/>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel >
+            <Rectangle Height="100" Width="100" x:Name="ColorRectangle" 
+                       Fill="{Binding  CustomBrush, Source={StaticResource TestFillColor}, Mode=TwoWay}">
+            </Rectangle> 
+        </StackPanel>
+    </DockPanel>
 </Window>

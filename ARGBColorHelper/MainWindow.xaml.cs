@@ -20,9 +20,43 @@ namespace ARGBColorHelper
     /// </summary>
     public partial class MainWindow : Window
     {
+
+
+        CustomColorView ccv; 
+
         public MainWindow()
         {
             InitializeComponent();
+        }
+               
+        private void ASlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+           //ccv.A =(byte)ASlider.Value;
+           //SolidColorBrush sc =  Resources.FindName("TestColorBrush") as SolidColorBrush;
+           //FillRectangle();
+        }
+
+        private void RSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            //ccv.R = (byte)RSlider.Value;
+            //FillRectangle();
+        }
+
+        private void GSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            //ccv.G = (byte)GSlider.Value;
+            //FillRectangle();
+        }
+
+        private void BSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            //ccv.B = (byte)BSlider.Value;
+            //FillRectangle();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            ccv = this.FindResource("TestFillColor") as CustomColorView; 
         }
     }
 }
